@@ -1,0 +1,22 @@
+#messages {
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 20px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+#composeMessage {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.messageFrom {
+    text-align: right;
+    margin: 10px;
+}
+
+.messageTo {
+    text-align: left;
+    margin: 10px;
+}

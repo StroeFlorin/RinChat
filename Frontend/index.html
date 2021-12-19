@@ -3,12 +3,21 @@
 
 <head>
     <title>Hello world!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div id="messages">
+        <div class="messageFrom">Hello</div>
+        <div class="messageFrom">Ce mai faci?</div>
+        <div class="messageTo">Bine tu?</div>
+    </div>
+
     <p id="sentMessage"></p>
-    <input type="text" id="messageInput" placeholder="Your messsage here...">
-    <button type="button" id="sendMessageBtn" onclick="sendMessage()">Send message</button>
+    <div id="composeMessage">
+        <input type="text" id="messageInput" placeholder="Your messsage here...">
+        <button type="button" id="sendMessageBtn" onclick="sendMessage()">Send message</button>
+    </div>
 
     <script>
         var messageInput = document.getElementById("messageInput");
