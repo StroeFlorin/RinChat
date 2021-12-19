@@ -8,21 +8,33 @@
 
 <body>
     <div id="messages">
-        <div class="messageFrom">Hello</div>
-        <div class="messageFrom">Ce mai faci?</div>
-        <div class="messageTo">Bine tu?</div>
     </div>
-
-    <p id="sentMessage"></p>
+    </br>
     <div id="composeMessage">
         <input type="text" id="messageInput" placeholder="Your messsage here...">
         <button type="button" id="sendMessageBtn" onclick="sendMessage()">Send message</button>
     </div>
 
     <script>
+        var lastMessageId = 0;
         var messageInput = document.getElementById("messageInput");
         var sendMessageBtn = document.getElementById("sendMessageBtn")
-        var sentMessage = document.getElementById("sentMessage");
+        var messagesContainer = document.getElementById("messages");
+
+        window.setInterval(function () { sendGET(1, 1) }, 1000);
+
+        function sendGET(from, to) {
+            const url = "../Backend/getMessages.php?fromUserId=" + from + "&toUserId=" + to + "&lastMessageId=" + lastMessageId;
+            fetch(url, { method: 'GET' })
+                .then(response => response.json())
+                .then(json => {
+                    json.forEach(message => {
+                        messagesContainer.innerHTML += "<div class='messageFrom'>" + message.text + "</div>";
+                        lastMessageId = message.id
+                        console.log(lastMessageId);
+                    });
+                });
+        }
 
         function sendPOST(from, to, message) {
             let formData = new FormData();
@@ -39,6 +51,7 @@
                 .then(data => console.log(data));
         }
 
+
         messageInput.addEventListener("keyup", function (event) {
             if (event.keyCode == 13) {
                 event.preventDefault();
@@ -47,9 +60,9 @@
         });
 
         function sendMessage() {
-            sentMessage.innerHTML = messageInput.value;
             sendPOST(1, 1, messageInput.value);
             messageInput.value = "";
+            //sendGET(1, 1);
         }
 
     </script>
