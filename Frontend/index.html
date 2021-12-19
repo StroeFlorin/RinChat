@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello world!</title>
+</head>
+
+<body>
+    <p id="sentMessage"></p>
+    <input type="text" id="messageInput" placeholder="Your messsage here...">
+    <button type="button" id="sendMessageBtn" onclick="sendMessage()">Send message</button>
+
+    <script>
+        var messageInput = document.getElementById("messageInput");
+        var sendMessageBtn = document.getElementById("sendMessageBtn")
+        var sentMessage = document.getElementById("sentMessage");
+
+        messageInput.addEventListener("keyup", function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                sendMessageBtn.click();
+            }
+        });
+
+        function sendMessage() {
+            sentMessage.innerHTML = messageInput.value;
+            messageInput.value = "";
+        }
+    </script>
+</body>
+
+</html>
