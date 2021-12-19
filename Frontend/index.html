@@ -15,6 +15,21 @@
         var sendMessageBtn = document.getElementById("sendMessageBtn")
         var sentMessage = document.getElementById("sentMessage");
 
+        function sendPOST(from, to, message) {
+            let formData = new FormData();
+            formData.append('fromUserId', from);
+            formData.append('toUserId', to);
+            formData.append('message', message);
+            const url = "../Backend/sendMessage.php";
+
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+
         messageInput.addEventListener("keyup", function (event) {
             if (event.keyCode == 13) {
                 event.preventDefault();
@@ -24,8 +39,10 @@
 
         function sendMessage() {
             sentMessage.innerHTML = messageInput.value;
+            sendPOST(1, 1, messageInput.value);
             messageInput.value = "";
         }
+
     </script>
 </body>
 
