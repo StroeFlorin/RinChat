@@ -4,6 +4,8 @@
     border-radius: 20px;
     width: 400px;
     margin: 0 auto;
+    overflow-y: scroll; 
+    height:300px;
 }
 
 #composeMessage {

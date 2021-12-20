@@ -24,7 +24,7 @@
         var sendMessageBtn = document.getElementById("sendMessageBtn")
         var messagesContainer = document.getElementById("messages");
 
-        window.setInterval(function () { sendGET(myId, destinationId) }, 1000);
+        window.setInterval(function () { sendGET(myId, destinationId) }, 500);
 
         function sendGET(from, to) {
             const url = "../Backend/getMessages.php?fromUserId=" + from + "&toUserId=" + to + "&lastMessageId=" + lastMessageId;
@@ -39,6 +39,7 @@
                         }
                         lastMessageId = message.id
                         console.log(lastMessageId);
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
                     });
                 });
         }
@@ -69,7 +70,7 @@
         function sendMessage() {
             sendPOST(myId, destinationId, messageInput.value);
             messageInput.value = "";
-            //sendGET(1, 1);
+            sendGET(myId, destinationId);
         }
 
     </script>
