@@ -16,12 +16,15 @@
     </div>
 
     <script>
+        var myId = 1;
+        var destinationId = 0;
+
         var lastMessageId = 0;
         var messageInput = document.getElementById("messageInput");
         var sendMessageBtn = document.getElementById("sendMessageBtn")
         var messagesContainer = document.getElementById("messages");
 
-        window.setInterval(function () { sendGET(1, 1) }, 1000);
+        window.setInterval(function () { sendGET(myId, destinationId) }, 1000);
 
         function sendGET(from, to) {
             const url = "../Backend/getMessages.php?fromUserId=" + from + "&toUserId=" + to + "&lastMessageId=" + lastMessageId;
@@ -29,7 +32,11 @@
                 .then(response => response.json())
                 .then(json => {
                     json.forEach(message => {
-                        messagesContainer.innerHTML += "<div class='messageFrom'>" + message.text + "</div>";
+                        if (message.from_id == myId) {
+                            messagesContainer.innerHTML += "<div class='messageTo'>" + message.text + "</div>";
+                        } else {
+                            messagesContainer.innerHTML += "<div class='messageFrom'>" + message.text + "</div>";
+                        }
                         lastMessageId = message.id
                         console.log(lastMessageId);
                     });
@@ -60,7 +67,7 @@
         });
 
         function sendMessage() {
-            sendPOST(1, 1, messageInput.value);
+            sendPOST(myId, destinationId, messageInput.value);
             messageInput.value = "";
             //sendGET(1, 1);
         }

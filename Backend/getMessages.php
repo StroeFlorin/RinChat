@@ -3,7 +3,7 @@ function getFromDB($lastId, $from, $to)
 {
     include('dbConnection.php');
 
-    $sql = "SELECT * FROM message where from_id = $from and to_id = $to and id > $lastId";
+    $sql = "SELECT * FROM message where (from_id = $from or from_id = $to) and (to_id = $from or to_id = $to) and id > $lastId order by id";
 
     $result = $conn->query($sql);
 
