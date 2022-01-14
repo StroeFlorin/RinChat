@@ -5,6 +5,8 @@ var lastMessageId = 0;
 var messageInput = document.getElementById("messageInput");
 var sendMessageBtn = document.getElementById("sendMessageBtn")
 var messagesContainer = document.getElementById("messages");
+var phoneNumber = document.getElementById("phonenumber");
+
 
 window.setInterval(function () { sendGET(myId, destinationId) }, 500);
 
@@ -53,4 +55,9 @@ function sendMessage() {
     sendPOST(myId, destinationId, messageInput.value);
     messageInput.value = "";
     sendGET(myId, destinationId);
+}
+
+function initialize() {
+    const auth = firebase.auth()
+    phoneNumber.innerHTML = auth.currentUser.phoneNumber;
 }

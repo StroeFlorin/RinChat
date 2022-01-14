@@ -15,14 +15,19 @@
 </head>
 
 <body>
-    <div id="authentication" class="visible mx-auto">
-        <div id="appTitle">RinChat</div>
+    <div id="appTitle">RinChat</div>
+    <div id="loader">Loading UI...</div>
+
+    <div id="authentication" class="hidden">
         <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
-        <script src="app.js"></script>
     </div>
 
-    <div id="loggedIn" class="invisible">
+    <div id="signed-in" class="hidden">
+        <div id="phonenumber"></div>
+
+        <button type="button" class="btn btn-link" id="logout" onclick="logout()">Link</button>
+        <br>
+
         <div id="messages" class="overflow-auto">
         </div>
         </br>

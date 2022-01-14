@@ -9,6 +9,11 @@
     margin-bottom: 40px;
 }
 
+#loader {
+  font-size: 30px;
+  text-align: center;
+}
+
 body {
     background: linear-gradient(-45deg, #ee7752, #ececec, #23a6d5, #23d5ab);
     background-size: 600% 600%;
@@ -51,4 +56,8 @@ body {
 .messageTo {
     text-align: left;
     margin: 10px;
+}
+
+.hidden {
+  display: none;
 }
