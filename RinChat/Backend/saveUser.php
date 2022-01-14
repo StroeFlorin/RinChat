@@ -12,7 +12,7 @@ function insertIntoDB($uid, $phoneNumber)
 {
     include('dbConnection.php');
 
-    $sql = "INSERT INTO user (uid, phone_number, alias) VALUES ('$uid', '$phoneNumber', '')";
+    $sql = "INSERT INTO user (uid, phone_number) VALUES ('$uid', '$phoneNumber')";
 
     if ($conn->query($sql) === TRUE) {
         sendResponse("User saved!");

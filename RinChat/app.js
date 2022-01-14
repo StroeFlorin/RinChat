@@ -10,7 +10,7 @@ var phoneNumber = document.getElementById("phoneNumber");
 var onlineUsersCount = document.getElementById("usersCount");
 
 function getMessages() {
-    const url = "../Backend/getMessages.php?lastMessageId=" + lastMessageId + "&uid=" + currentUid;
+    const url = "Backend/getMessages.php?lastMessageId=" + lastMessageId + "&uid=" + currentUid;
     fetch(url, { method: 'GET' })
         .then(response => response.json())
         .then(json => {
@@ -30,7 +30,7 @@ function getMessages() {
 
 
 function getOnlineUsersCount() {
-    const url = "../Backend/getOnlineUsers.php"
+    const url = "Backend/getOnlineUsers.php"
     fetch(url, { method: 'GET' })
         .then(response => response.json())
         .then(json => {
@@ -46,7 +46,7 @@ function sendPOST(from, to, message) {
     formData.append('fromUserId', currentUid);
     formData.append('toUserId', to);
     formData.append('message', message);
-    const url = "../Backend/sendMessage.php";
+    const url = "Backend/sendMessage.php";
 
     fetch(url, {
         method: 'POST',
@@ -60,7 +60,7 @@ function saveUserToDb(uid, phoneNumber) {
     let formData = new FormData();
     formData.append('uid', uid);
     formData.append('phoneNumber', phoneNumber);
-    const url = "../Backend/saveUser.php";
+    const url = "Backend/saveUser.php";
     fetch(url, {
         method: 'POST',
         body: formData
@@ -87,6 +87,9 @@ function initialize() {
     currentPhoneNumber = auth.currentUser.phoneNumber;
     currentUid = auth.currentUser.uid;
     phoneNumber.innerHTML = auth.currentUser.phoneNumber;
-    window.setInterval(function () { getMessages() }, 1000);
-    window.setInterval(function () { getOnlineUsersCount() }, 3000);
+
+    getMessages();
+    getOnlineUsersCount();
+    window.setInterval(function () { getMessages() }, 3000);
+    window.setInterval(function () { getOnlineUsersCount() }, 7000);
 }
