@@ -15,6 +15,9 @@
 </head>
 
 <body>
+
+
+
     <div id="appTitle">RinChat</div>
     <div id="loader">Loading UI...</div>
 
@@ -23,18 +26,58 @@
     </div>
 
     <div id="signed-in" class="hidden">
-        <div id="phonenumber"></div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                RinChat
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" onclick="logout()" href="#">Logout</a>
+                    </li>
+                </ul>
+                <span class="navbar-text" id="phoneNumber">
+                    phone number
+                </span>
+            </div>
+        </nav>
 
-        <button type="button" class="btn btn-link" id="logout" onclick="logout()">Link</button>
-        <br>
-
-        <div id="messages" class="overflow-auto">
-        </div>
         </br>
-        <div id="composeMessage">
-            <input type="text" id="messageInput" placeholder="Your messsage here...">
-            <button type="button" id="sendMessageBtn" onclick="sendMessage()">Send message</button>
+
+        <div id="homeBody">
+            <div id="chatTitle">public chat</div>
+            <div id="numberOfUsersOnline"><span id="usersCount">0</span> users online</div>
+
+            <hr>
+
+            <div id="messages" class="overflow-auto">
+            </div>
+
+            <hr>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Type a message" aria-label="Type a message"
+                    aria-describedby="basic-addon2" id="messageInput">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" onclick="sendMessage()"
+                        id="sendMessageBtn">Send</button>
+                </div>
+            </div>
+
         </div>
+
+
     </div>
 
     <script src="firebase.js"></script>

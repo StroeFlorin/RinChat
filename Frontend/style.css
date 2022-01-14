@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Pacifico&display=swap');
 
 #appTitle {
-    font-family: 'Cabin Sketch', cursive;
-    font-size: 70px;
-    text-shadow: 10px 10px 17px #404040;
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 40px;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 70px;
+  text-shadow: 10px 10px 17px #404040;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
 
 #loader {
@@ -15,49 +15,114 @@
 }
 
 body {
-    background: linear-gradient(-45deg, #ee7752, #ececec, #23a6d5, #23d5ab);
-    background-size: 600% 600%;
-    animation: gradient 10s ease infinite;
+  background: linear-gradient(-45deg, #ee7752, #ececec, #23a6d5, #23d5ab);
+  background-size: 600% 600%;
+  animation: gradient 10s ease infinite;
 }
 
 @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-  
-    50% {
-      background-position: 100% 50%;
-    }
-  
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
   }
 
-#messages {
-    border: 1px solid blue;
-    padding: 10px;
-    border-radius: 20px;
-    width: 400px;
-    margin: 0 auto;
-    height: 300px;
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-#composeMessage {
-    margin: 0 auto;
-    width: 400px;
+#messages {
+  border: 0px;
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 100%;
+  height: 400px;
+}
+
+#chatTitle {
+  font-size: 25px;
+}
+
+#numberOfUsersOnline {
+  font-size: 17px;
+}
+
+#homeBody {
+  border: 1px solid black;
+  box-shadow: 5px 10px 8px #888888;
+  padding: 10px;
+  border-radius: 20px;
+  width: 700px;
+  margin: 0 auto;
+  background: rgb(255, 255, 255);
+}
+
+
+.messageTo {
+  text-align: right;
+}
+
+
+.myMessage {
+  border-radius: 20px;
+  background-color: rgb(144, 207, 207);
+  margin: 10px;
+  padding: 5px;
+}
+
+.otherMessages {
+  border-radius: 20px;
+  background-color: rgb(184, 184, 184);
+  margin: 10px;
+  padding: 5px;
+}
+
+.messageText {
+  font-size: 17px;
+  text-align: left;
+}
+
+.messageUser {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.messageDate {
+  font-size: 13px;
+  text-align: right;
 }
 
 .messageFrom {
-    text-align: right;
-    margin: 10px;
-}
-
-.messageTo {
-    text-align: left;
-    margin: 10px;
+  text-align: left;
+  margin: 10px;
 }
 
 .hidden {
   display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(105, 102, 102);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
 }

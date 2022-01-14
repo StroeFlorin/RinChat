@@ -18,6 +18,12 @@ var uiConfig = {
             if (authResult.user) {
                 handleSignedInUser(authResult.user);
             }
+
+            if (authResult.additionalUserInfo) {
+                if (authResult.additionalUserInfo.isNewUser) {
+                    saveUserToDb(authResult.user.uid, authResult.user.phoneNumber);
+                }
+            }
             return false;
         },
         uiShown: function () {
@@ -56,11 +62,11 @@ var handleSignedOutUser = function () {
     ui.start('#firebaseui-auth-container', uiConfig);
 };
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById('loader').style.display = 'none';
     user ? handleSignedInUser(user) : handleSignedOutUser();
-  });
+});
 
-var logout = function() {
+var logout = function () {
     firebase.auth().signOut();
 }

@@ -12,10 +12,10 @@ function insertIntoDB($message, $from, $to)
 {
     include('dbConnection.php');
 
-    $sql = "INSERT INTO message (from_id, to_id, text) VALUES ($from, $to, '$message')";
+    $sql = "INSERT INTO message (from_id, to_id, text) VALUES ('$from', '$to', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-        sendResponse("Message sent successfully");
+        sendResponse("Message sent successfully!");
     } else {
         sendResponse($conn->error);
     }
@@ -25,8 +25,8 @@ function insertIntoDB($message, $from, $to)
 
 if (isset($_POST["message"]) && isset($_POST["fromUserId"]) && isset($_POST["toUserId"])) {
     $message = $_POST["message"];
-    $from = (int) $_POST["fromUserId"];
-    $to = (int) $_POST["toUserId"];
+    $from = $_POST["fromUserId"];
+    $to = $_POST["toUserId"];
 
     insertIntoDB($message, $from, $to);
 } else {
